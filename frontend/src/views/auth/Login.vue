@@ -46,7 +46,7 @@
     <GuestLayout>
 
         <header class="text-center w-100">
-            <h1>Log ind</h1>
+            <h1>Log in</h1>
         </header>
 
         <div class="form-container">
@@ -69,7 +69,7 @@
                 </section>
 
                 <section class="mt-5">
-                    <button v-if="!isHidden" type="submit">Login</button>
+                    <button v-if="!isHidden" type="submit">Log in</button>
                     <button v-else class="submit" type="button" disabled>
                         <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
                         Indlæser...
