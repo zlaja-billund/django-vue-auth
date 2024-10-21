@@ -11,3 +11,7 @@ This is small project that is showing combining Django and Vue project with auth
 - Vue 3
 - Restframework
 - Restframework simple jwt
+
+## Screenshots
+
+![screenshot login page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/login.png)
