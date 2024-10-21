@@ -1,6 +1,6 @@
 # Django Vue combined project with authentication
 
-***This project is still in progress and not yet complete, but more code will be pushed soon.**
+***This project is still in progress and not yet complete, but more code will be pushed soon.***
 
 ## About
 This is small project that is showing combining Django and Vue project with authentication. 
