@@ -1,9 +1,29 @@
 <script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+  import { useLoading } from "vue-loading-overlay";
+  
+  import AuthLayout from '@/layouts/AuthenticatedLayout.vue';
+
+
+
+  const $loading = useLoading({
+    canCancel: false,
+    color: '#0D2F41',
+    height: 128,
+    width: 128,
+  });
+
+
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <AuthLayout>
+    <h1>Hello world it works</h1>
+
+  </AuthLayout>
+  
 </template>
+
+<style scoped lang="scss">
+@use '../assets/main';
+
+</style>
