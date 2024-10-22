@@ -20,6 +20,19 @@ const router = createRouter({
       name: 'Login',
       component: Login
     },
+    {
+      path: '/logout',
+      name: 'Logout',
+      meta: {
+        requiresAuth: true,
+      },
+      component: {
+        beforeRouteEnter() {
+          const auth = useAuthStore();
+          auth.logout();
+        }
+      }
+    },
   ]
 })
 

@@ -19,6 +19,8 @@
   <AuthLayout>
     <h1>Hello world it works</h1>
 
+    <router-link :to="{ name: 'Logout' }" >Logout here</router-link>
+
   </AuthLayout>
   
 </template>
