@@ -29,3 +29,4 @@ coverage
 
 *.tsbuildinfo
 .vscode/
+package-lock.json*
