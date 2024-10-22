@@ -81,10 +81,10 @@
         <footer>
             <div class="row">
                 <div class="col text-end me-3">
-                    <!--<router-link :to="{ name: 'ForgotPassword' }">Glemt dit kodeord ?</router-link>-->
+                    <!--<router-link :to="{ name: 'ForgotPassword' }">Forgot your password ?</router-link>-->
                 </div>
                 <div class="col text-start ms-3">
-                    <!--<router-link :to="{ name: 'CreateNewUser'}">Opret nyt konto</router-link>-->
+                    <!--<router-link :to="{ name: 'CreateNewUser'}">Create new account</router-link>-->
                 </div>
             </div>
         </footer>        
