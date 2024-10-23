@@ -6,11 +6,12 @@
 This is small project that is showing combining Django and Vue project with authentication. 
 
 
-## Versions
+## Versions & includes
 - Django 5.1.2
 - Vue 3
 - Restframework
 - Restframework simple jwt
+- Psycopg2-binary
 
 ## Screenshots
 **Log in page**
