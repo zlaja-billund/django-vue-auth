@@ -11,13 +11,13 @@
     const { errors, defineField } = useForm({
         validationSchema: toTypedSchema(
             yup.object({
-            username: yup.string().required(),
+            email: yup.string().email().required(),
             password: yup.string().min(6).required(),
             }),
         ),
         });
 
-    const [username, usernameAttrs] = defineField('username', {
+    const [email, emailAttrs] = defineField('email', {
         validateOnModelUpdate: false,
     });
 
@@ -35,7 +35,7 @@
         
         setTimeout(() => {
             isHidden.value = false;
-            authStore.login(username.value, password.value).catch((error) => {
+            authStore.login(email.value, password.value).catch((error) => {
                 toast.error("Authentication failed: " + error.detail);
             });
         },1000);              
@@ -53,10 +53,10 @@
 
             <form @submit.prevent="onSubmit" class="p-0 mt-5">
                 <section>
-                    <label for="usernameInput" class="form-label">Write your username</label>
-                    <input type="text" v-model="username" v-bind="usernameAttrs" class="form-control" id="usernameInput" required>
+                    <label for="emailInput" class="form-label">Write your email</label>
+                    <input type="text" v-model="email" v-bind="emailAttrs" class="form-control" id="emailInput" required>
                     <div class="validation-errors">
-                        {{ errors.username }}
+                        {{ errors.email }}
                     </div>
                 </section>
 
@@ -84,7 +84,7 @@
                     <!--<router-link :to="{ name: 'ForgotPassword' }">Forgot your password ?</router-link>-->
                 </div>
                 <div class="col text-start ms-3">
-                    <!--<router-link :to="{ name: 'CreateNewUser'}">Create new account</router-link>-->
+                    <router-link :to="{ name: 'Register'}">Create new account</router-link>
                 </div>
             </div>
         </footer>        
