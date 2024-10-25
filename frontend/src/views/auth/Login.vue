@@ -11,7 +11,7 @@
     const { errors, defineField } = useForm({
         validationSchema: toTypedSchema(
             yup.object({
-            email: yup.string().required(),
+            email: yup.string().email().required(),
             password: yup.string().min(6).required(),
             }),
         ),
