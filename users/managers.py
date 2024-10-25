@@ -1,7 +1,8 @@
 from django.contrib.auth.base_user import BaseUserManager
 
 '''
-This class is 
+This class is designed to handle the creation of users and superusers. 
+Superuser creation cannot handle email logins when the username is set to None in the model.
 '''
 class UserManager(BaseUserManager):
     def create_user(self, email, password=None, **extra_fields):
