@@ -84,7 +84,7 @@
                     <!--<router-link :to="{ name: 'ForgotPassword' }">Forgot your password ?</router-link>-->
                 </div>
                 <div class="col text-start ms-3">
-                    <!--<router-link :to="{ name: 'CreateNewUser'}">Create new account</router-link>-->
+                    <router-link :to="{ name: 'Register'}">Create new account</router-link>
                 </div>
             </div>
         </footer>        

@@ -3,10 +3,6 @@ from .models import User
 from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
-'''
-TODO: https://simpleisbetterthancomplex.com/tutorial/2016/07/22/how-to-extend-django-user-model.html#abstractbaseuser
-'''
-
 class RegisterSerializer(serializers.ModelSerializer):
     email = serializers.EmailField(
                                         required=True,

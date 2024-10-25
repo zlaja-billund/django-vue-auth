@@ -38,21 +38,22 @@ export const useAuthStore = defineStore({
 
             return router.push('/login');
         },
-        async create(email, firstName, surname, password){
+        async create(email, firstName, lastname, password, password2){
 
-            if(!email && !firstName && !surname && !password)
+            if(!email && !firstName && !lastname && !password && !password2)
             {
                 return false;
             }
 
             const data = {
                 email: email,
-                firstName: firstName,
-                surname: surname,
-                password: password
+                first_name: firstName,
+                last_name: lastname,
+                password: password,
+                password2: password2
             };
             
-            return await fetchWrapper.post(baseUrl + '/register', data);
+            return await fetchWrapper.post(baseUrl + '/user/register', data);
         },
         async requestResetPassword(email) {
             
