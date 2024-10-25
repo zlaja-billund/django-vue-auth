@@ -18,4 +18,4 @@ This is small project that is showing combining Django and Vue project with auth
 ![screenshot login page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/login.png)
 
 **Registration page**
-![screenshot login page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/registration_page.png)
+![screenshot registration page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/registration_page.png)
