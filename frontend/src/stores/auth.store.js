@@ -11,10 +11,10 @@ export const useAuthStore = defineStore({
         returnUrl: null,
     }),
     actions: {
-        async login(username, password) {
+        async login(email, password) {
 
             const data = {
-                username: username,
+                email: email,
                 password: password
             };
         
