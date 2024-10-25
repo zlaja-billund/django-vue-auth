@@ -126,7 +126,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'da-DK'
+LANGUAGE_CODE = 'en-US'
 
 TIME_ZONE = 'CET'
 
@@ -155,3 +155,6 @@ SIMPLE_JWT = {
 }
 
 SITE_ID = 1
+
+# Override default user model
+AUTH_USER_MODEL = 'users.user'
