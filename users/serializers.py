@@ -1,6 +1,9 @@
+from enum import unique
+
 from rest_framework import serializers
-from .models import User
+from .models import User, PasswordReset, EmailCheck
 from rest_framework.validators import UniqueValidator
+from rest_framework.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -40,3 +43,13 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+class ResetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField(
+        required=True,
+    ),
+
+    class Meta:
+        model = EmailCheck
+        fields = ['email']

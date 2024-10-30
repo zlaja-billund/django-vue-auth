@@ -13,7 +13,6 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
 
@@ -22,7 +21,6 @@ class PasswordReset(models.Model):
     user = models.OneToOneField(
         User,
         on_delete=models.DO_NOTHING,
-        primary_key= True
     )
 
     token = models.CharField(max_length=255)
@@ -30,4 +28,3 @@ class PasswordReset(models.Model):
 
     def __str__(self):
         return self.user.email
-
