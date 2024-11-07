@@ -1,11 +1,14 @@
 import os
 
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.core.serializers import serialize
 
 from rest_framework import generics, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
-from .serializers import RegisterSerializer, ResetPasswordRequestSerializer
+from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
+
+from .serializers import RegisterSerializer, ResetPasswordRequestSerializer, ResetPasswordSerializer
 from .models import User, PasswordReset
 
 
@@ -19,15 +22,13 @@ class RequestResetPasswordView(generics.GenericAPIView):
     serializer_class = ResetPasswordRequestSerializer
 
     def post(self, request):
-        serializer = ResetPasswordRequestSerializer(data=request.data)
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
 
-        # If request requst email is missing return validation error
-        try:
-            email = request.data['email']
-        except:
-            raise ValidationError({"error": "Bad request input"})
+        email = data['email']
 
-        user = User.objects.filter(email=email).first()
+        user = User.objects.get(email=email)
 
         if not user:
             raise ValidationError({'error': 'User with credentials not found'})
@@ -42,8 +43,38 @@ class RequestResetPasswordView(generics.GenericAPIView):
         )
 
         reset_url = f"{os.environ['PASSWORD_RESET_BASE_URL']}/{token}"
+        print(reset_url)
 
         # TODO: implement here to send an email
 
         return Response({'success': 'We have sent you a link to reset your password'}, status=status.HTTP_200_OK)
+
+class ResetPasswordView(generics.GenericAPIView):
+    serializer_class = ResetPasswordSerializer
+
+    def post(self, request, token):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+
+        new_password = data['new_password']
+        confirm_password = data['confirm_password']
+
+        if new_password != confirm_password:
+            raise ValidationError({"error": "Passwords do not match"})
+
+        reset_obj = PasswordReset.objects.get(token=token)
+
+        if not reset_obj:
+            raise ValidationError({"error": "Invalid Token"})
+
+        if reset_obj.user:
+            reset_obj.user.set_password(request.data['new_password'])
+            reset_obj.user.save()
+
+            reset_obj.delete()
+
+            return Response(data={"success": "Password updated"}, status=HTTP_200_OK)
+        else:
+            return Response({"error": "No user found"}, status=HTTP_404_NOT_FOUND)
 
