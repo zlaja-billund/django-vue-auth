@@ -5,7 +5,7 @@ from django.contrib.auth.tokens import PasswordResetTokenGenerator
 from rest_framework import generics, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
-from .serializers import RegisterSerializer, ResetPasswordSerializer
+from .serializers import RegisterSerializer, ResetPasswordRequestSerializer
 from .models import User, PasswordReset
 
 
@@ -16,10 +16,10 @@ class RegisterView(generics.ListCreateAPIView):
 
 
 class ResetPasswordView(generics.GenericAPIView):
-    serializer_class = ResetPasswordSerializer
+    serializer_class = ResetPasswordRequestSerializer
 
     def post(self, request):
-        serializer = ResetPasswordSerializer(data=request.data)
+        serializer = ResetPasswordRequestSerializer(data=request.data)
 
         # If request requst email is missing return validation error
         try:

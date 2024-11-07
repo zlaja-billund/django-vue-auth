@@ -45,7 +45,7 @@ class RegisterSerializer(serializers.ModelSerializer):
         return user
 
 
-class ResetPasswordSerializer(serializers.Serializer):
+class ResetPasswordRequestSerializer(serializers.Serializer):
     email = serializers.EmailField(
         required=True,
     ),
