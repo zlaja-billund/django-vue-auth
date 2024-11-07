@@ -15,7 +15,7 @@ class RegisterView(generics.ListCreateAPIView):
     serializer_class = RegisterSerializer
 
 
-class ResetPasswordView(generics.GenericAPIView):
+class RequestResetPasswordView(generics.GenericAPIView):
     serializer_class = ResetPasswordRequestSerializer
 
     def post(self, request):

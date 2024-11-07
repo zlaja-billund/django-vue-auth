@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import RegisterView, ResetPasswordView
+from .views import RegisterView, RequestResetPasswordView
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
@@ -7,7 +7,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     path('register', RegisterView.as_view(), name="user_register"),
-    path('reset-password', ResetPasswordView.as_view(), name="reset-password")
+    path('request-reset-password', RequestResetPasswordView.as_view(), name="request-reset-password")
 ]
 
 
