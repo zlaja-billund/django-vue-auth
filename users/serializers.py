@@ -1,7 +1,7 @@
 from enum import unique
 
 from rest_framework import serializers
-from .models import User, PasswordReset, EmailCheck
+from .models import User, PasswordReset
 from rest_framework.validators import UniqueValidator
 from rest_framework.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
@@ -49,7 +49,3 @@ class ResetPasswordSerializer(serializers.Serializer):
     email = serializers.EmailField(
         required=True,
     ),
-
-    class Meta:
-        model = EmailCheck
-        fields = ['email']
