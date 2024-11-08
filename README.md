@@ -21,8 +21,8 @@ This is small project that is showing combining Django and Vue project with auth
 ![screenshot registration page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/registration_page.png)
 
 **Forgot password page**
-![screenshot registration page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/forgot-password.png)
+![screenshot forgot password page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/forgot-password.png)
 
 **Reset password page**
-![screenshot registration page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/reset-password.png)
+![screenshot reset password page](https://github.com/zlaja-billund/django-vue-auth/blob/main/git-media/reset-password.png)
 
