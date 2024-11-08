@@ -66,23 +66,23 @@ export const useAuthStore = defineStore({
                 email: email
             };
 
-            return await fetchWrapper.post(baseUrl + '/forgot-password', data);
+            return await fetchWrapper.post(baseUrl + '/user/request-reset-password', data);
 
         },
-        async resetPassword(userid, token, password)
+        async resetPassword(token, newPassword, confirmPassword)
         {
-            if(userid === 'undefined' || token === 'undefined' || password === 'undefined')
+            if(token === 'undefined' || newPassword === 'undefined' || confirmPassword === 'undefined')
             {
                 return 'Params missing';
             }
 
             const data = {
-                userId: userid,
-                password: password,
+                new_password: newPassword,
+                confirm_password: confirmPassword,
                 token: token
             };
 
-            return await fetchWrapper.post(baseUrl + '/reset-password', data );
+            return await fetchWrapper.post(baseUrl + '/user/reset-password', data );
         },
         async confirmEmail(userId, token){
 

@@ -28,9 +28,9 @@ class RequestResetPasswordView(generics.GenericAPIView):
 
         email = data['email']
 
-        user = User.objects.get(email=email)
-
-        if not user:
+        try:
+            user = User.objects.get(email=email)
+        except:
             raise ValidationError({'error': 'User with credentials not found'})
 
         token_generator = PasswordResetTokenGenerator()
@@ -52,20 +52,21 @@ class RequestResetPasswordView(generics.GenericAPIView):
 class ResetPasswordView(generics.GenericAPIView):
     serializer_class = ResetPasswordSerializer
 
-    def post(self, request, token):
+    def post(self, request):
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data
 
         new_password = data['new_password']
         confirm_password = data['confirm_password']
+        token = data['token']
 
         if new_password != confirm_password:
             raise ValidationError({"error": "Passwords do not match"})
 
-        reset_obj = PasswordReset.objects.get(token=token)
-
-        if not reset_obj:
+        try:
+            reset_obj = PasswordReset.objects.get(token=token)
+        except:
             raise ValidationError({"error": "Invalid Token"})
 
         if reset_obj.user:

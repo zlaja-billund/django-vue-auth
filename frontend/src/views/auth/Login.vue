@@ -81,7 +81,7 @@
         <footer>
             <div class="row">
                 <div class="col text-end me-3">
-                    <!--<router-link :to="{ name: 'ForgotPassword' }">Forgot your password ?</router-link>-->
+                    <router-link :to="{ name: 'ForgotPassword' }">Forgot your password ?</router-link>
                 </div>
                 <div class="col text-start ms-3">
                     <router-link :to="{ name: 'Register'}">Create new account</router-link>

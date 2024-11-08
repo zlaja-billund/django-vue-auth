@@ -8,8 +8,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 urlpatterns = [
     path('register', RegisterView.as_view(), name="user_register"),
     path('request-reset-password', RequestResetPasswordView.as_view(), name="request-reset-password"),
-    path('reset-password/<str:token>', ResetPasswordView.as_view(), name="reset-password"),
+    path('reset-password', ResetPasswordView.as_view(), name="reset-password"),
 ]
-
 
 urlpatterns = format_suffix_patterns(urlpatterns)

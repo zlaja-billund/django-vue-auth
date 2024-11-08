@@ -59,4 +59,5 @@ class ResetPasswordSerializer(serializers.Serializer):
     )
 
     confirm_password = serializers.CharField(write_only=True, required=True)
+    token = serializers.CharField(required=True)
 
