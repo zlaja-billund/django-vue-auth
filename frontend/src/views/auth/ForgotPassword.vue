@@ -47,7 +47,7 @@
 <template>
     <GuestLayout>
         <header class="text-center w-100">
-            <h1>Fortgot password</h1>
+            <h1>Forgot password</h1>
         </header>
 
         <div class="form-container">
@@ -72,7 +72,7 @@
         <footer>
             <div class="row">
                 <div class="col text-center">
-                    <router-link :to="{name: 'Login'}">Back to log in page</router-link>
+                    <router-link :to="{name: 'Login'}">Back to log in</router-link>
                 </div>
             </div>
         </footer>
