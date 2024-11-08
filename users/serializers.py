@@ -1,6 +1,9 @@
+from enum import unique
+
 from rest_framework import serializers
-from .models import User
+from .models import User, PasswordReset
 from rest_framework.validators import UniqueValidator
+from rest_framework.exceptions import ValidationError
 from django.contrib.auth.password_validation import validate_password
 
 class RegisterSerializer(serializers.ModelSerializer):
@@ -40,3 +43,21 @@ class RegisterSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+
+class ResetPasswordRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField(
+        required=True,
+    )
+
+class ResetPasswordSerializer(serializers.Serializer):
+    new_password = serializers.RegexField(
+        regex=r'^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$',
+        write_only=True,
+        error_messages={
+            'invalid': ('Password must be at least 8 characters long with at least one capital letter and symbol')}
+    )
+
+    confirm_password = serializers.CharField(write_only=True, required=True)
+    token = serializers.CharField(required=True)
+
