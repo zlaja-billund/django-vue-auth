@@ -8,7 +8,7 @@ This project demonstrates the integration of Django Rest Framework and Vue.js wi
 
 ## Versions & includes
 - Django 5.1.2
-- Vue 3
+- Vue 3 (Bootstrap 5)
 - Restframework
 - Restframework simple jwt
 - Psycopg2-binary
