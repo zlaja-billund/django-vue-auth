@@ -6,7 +6,12 @@
                     <slot />
                 </main>                
             </div>
-            <div class="col-8 p-0 m-0 background-image">
+            <div class="col-8 p-3 m-0 d-flex align-items-end justify-content-end background-image">
+                <span class="github-logo-field">
+                    <a class=" display-6" target="_blank" href="https://github.com/zlaja-billund/django-vue-auth">
+                        <font-awesome-icon :icon="['fab', 'github']" />
+                    </a>
+                </span>
             </div>
         </div>
     </div>
@@ -15,6 +20,14 @@
 
 <style scoped lang="scss">
 @use '../assets/scss' as c;
+
+.github-logo-field a {
+    color: c.$btn-defult-text-color;
+}
+
+.github-logo-field a:hover {
+    color: c.$btn-default-succes-hover;
+}
 
 .background-image {
     background-image:url('/images/background-image.jpg');

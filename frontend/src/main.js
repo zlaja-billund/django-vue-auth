@@ -15,12 +15,14 @@ import router from './router'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faInfoCircle, faPlus, faChevronLeft, faXmark, faCaretDown} from '@fortawesome/free-solid-svg-icons';
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
 library.add(faInfoCircle);
 library.add(faPlus);
 library.add(faChevronLeft);
 library.add(faXmark);
 library.add(faCaretDown);
+library.add(faGithub);
 
 
 // Toaster
