@@ -1,9 +1,9 @@
-# Django Vue combined project with authentication
+# Django and VUE.js with JWT Authentication integrated project
 
 ***This project is still in progress and not yet complete, but more code will be pushed soon.***
 
 ## About
-This is small project that is showing combining Django and Vue project with authentication. 
+This project demonstrates the integration of Django Rest Framework and Vue.js with JWT authentication. 
 
 
 ## Versions & includes
@@ -12,6 +12,9 @@ This is small project that is showing combining Django and Vue project with auth
 - Restframework
 - Restframework simple jwt
 - Psycopg2-binary
+
+## Attantion
+When you request a new password, note that the requested URL is printed in the log console.
 
 ## Screenshots
 **Log in page**
