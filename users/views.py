@@ -22,28 +22,31 @@ class RequestResetPasswordView(generics.GenericAPIView):
     serializer_class = ResetPasswordRequestSerializer
 
     def post(self, request):
+        # Validate data and parameter
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data
 
         email = data['email']
 
+        # Find user with this e-mail
         try:
             user = User.objects.get(email=email)
         except:
             raise ValidationError({'error': 'User with credentials not found'})
 
+        # Generate token
         token_generator = PasswordResetTokenGenerator()
         token = token_generator.make_token(user)
 
-        # Insert new password reset object in db
+        # Create new password reset object in db
         PasswordReset.objects.update_or_create(
             user=user,
             defaults={'token': token}
         )
 
-        reset_url = f"{os.environ['PASSWORD_RESET_BASE_URL']}/{token}"
-        print(reset_url)
+        reset_url = f"{os.environ['PASSWORD_RESET_BASE_URL']}/{token}" # Generate url with token
+        print(reset_url) # print url in console using for copy and paste in browser
 
         # TODO: implement here to send an email
 
@@ -53,6 +56,7 @@ class ResetPasswordView(generics.GenericAPIView):
     serializer_class = ResetPasswordSerializer
 
     def post(self, request):
+        # Validate data and parameter
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
         data = serializer.validated_data
@@ -61,14 +65,17 @@ class ResetPasswordView(generics.GenericAPIView):
         confirm_password = data['confirm_password']
         token = data['token']
 
+        # Check new password and confirm password matching
         if new_password != confirm_password:
             raise ValidationError({"error": "Passwords do not match"})
 
+        # Get data from PasswordReset table by token
         try:
             reset_obj = PasswordReset.objects.get(token=token)
         except:
             raise ValidationError({"error": "Invalid Token"})
 
+        # Update new user password ann delete PasswordReset item from db
         if reset_obj.user:
             reset_obj.user.set_password(request.data['new_password'])
             reset_obj.user.save()
