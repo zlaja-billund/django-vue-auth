@@ -13,7 +13,7 @@ This project demonstrates the integration of Django Rest Framework and Vue.js wi
 - Restframework simple jwt
 - Psycopg2-binary
 
-## Attantion
+## Attention
 When you request a new password, note that the requested URL is printed in the log console.
 
 ## Screenshots

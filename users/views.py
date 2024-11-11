@@ -10,6 +10,7 @@ from rest_framework.status import HTTP_200_OK, HTTP_404_NOT_FOUND
 
 from .serializers import RegisterSerializer, ResetPasswordRequestSerializer, ResetPasswordSerializer
 from .models import User, PasswordReset
+from services.email_handler import EmailHandler
 
 
 # Create your views here.
@@ -48,7 +49,12 @@ class RequestResetPasswordView(generics.GenericAPIView):
         reset_url = f"{os.environ['PASSWORD_RESET_BASE_URL']}/{token}" # Generate url with token
         print(reset_url) # print url in console using for copy and paste in browser
 
-        # TODO: implement here to send an email
+        # Sending requested email
+        email_status = EmailHandler.send_request_reset_password( user_email=user.email, reset_password_url=reset_url )
+
+        #if email status is failed
+        if not email_status:
+            return Response(data={'error', 'Email not send, please contact support team'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
         return Response({'success': 'We have sent you a link to reset your password'}, status=status.HTTP_200_OK)
 
