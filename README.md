@@ -1,10 +1,9 @@
 # Django and VUE.js with JWT Authentication integrated project
 
-***This project is still in progress and not yet complete, but more code will be pushed soon.***
-
 ## About
-This project demonstrates the integration of Django Rest Framework and Vue.js with JWT authentication. 
+This project demonstrates the integration of Django Rest Framework and Vue.js with JWT authentication.
 
+To request a password reset, you need to set up an SMTP provider in the <code>.env</code> file. Please refer to the <code>.env-example</code> file for guidance.
 
 ## Versions & includes
 - Django 5.1.2
