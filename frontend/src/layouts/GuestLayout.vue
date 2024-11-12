@@ -1,14 +1,14 @@
 <template>
-    <div class="container-fluid min-vh-100 d-flex flex-column ">
+    <div class="container-fluid min-vh-100 d-flex flex-column">
         <div class="row flex-grow-1">
-            <div class="col-4 bg-col-left position-relative">
+            <div class="col-lg-4 col-md-12 bg-col-left position-relative">
                 <main class="align-items-center">
                     <slot />
                 </main>                
             </div>
-            <div class="col-8 p-3 m-0 d-flex align-items-end justify-content-end background-image">
+            <div class="col-8 p-3 m-0 d-lg-flex d-none d-lg-block align-items-end justify-content-end background-image">
                 <span class="github-logo-field">
-                    <a class=" display-6" target="_blank" href="https://github.com/zlaja-billund/django-vue-auth">
+                    <a class="display-6" target="_blank" href="https://github.com/zlaja-billund/django-vue-auth">
                         <font-awesome-icon :icon="['fab', 'github']" />
                     </a>
                 </span>
