@@ -147,7 +147,7 @@ import { errorMessages } from 'vue/compiler-sfc';
 
         <footer>
             <div class="row">
-                <div class="col text-center me-3">
+                <div class="col text-center">
                     <router-link :to="{ name: 'Login' }">I already have an account</router-link>
                 </div>
             </div>
