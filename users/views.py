@@ -1,8 +1,5 @@
 import os
-
 from django.contrib.auth.tokens import PasswordResetTokenGenerator
-from django.core.serializers import serialize
-
 from rest_framework import generics, status
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
