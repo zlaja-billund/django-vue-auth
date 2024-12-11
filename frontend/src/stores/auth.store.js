@@ -19,7 +19,7 @@ export const useAuthStore = defineStore({
             };
         
             //Get login token from 
-            const responseData = await fetchWrapper.post(baseUrl + '/token/', data);
+            const responseData = await fetchWrapper.post(baseUrl + '/user/login/', data);
             
             if(responseData)
             {
